@@ -16,3 +16,47 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+
+@api.route('/star', methods=['GET'])
+def handle_star():
+    
+    
+    r =requests.get('https://swapi.dev/api/planets')
+    run = r.json()
+    
+    return jsonify(run), 200
+
+@api.route('/dinner', methods=['GET'])
+def handle_dinner():
+    din = Dinner.query.all()
+
+    response = []
+    for d in din:
+        response.append(d.serialize())
+    
+    return jsonify(response), 200
+
+
+
+@api.route('/dessert', methods=['GET'])
+def handle_dessert():
+    des = Dessert.query.all()
+
+    response = []
+    for d in des:
+        response.append(d.serialize())
+    
+    return jsonify(response), 200
+
+
+@api.route('/fridate', methods=['GET'])
+def handle_fridate():
+    din = Fridate.query.all()
+
+    response = []
+    for d in din:
+        response.append(d.serialize())
+    
+    return jsonify(response), 200
+
